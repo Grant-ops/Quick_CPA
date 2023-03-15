@@ -1,5 +1,3 @@
-aaaa
-
 from flask import Flask, render_template, url_for, redirect, request, flash
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
