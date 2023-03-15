@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Select a Chapter</h1>
+    <form method="post">
+        <select name="chapter_id">{% for chapter in chapters %}
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="chapter" id="chapter{{ chapter.id }}" value="{{ chapter.id }}">
+                <label class="form-check-label" for="chapter{{ chapter.id }}">
+                    {{ chapter.name }}
+                </label>
+            </div>
+        {% endfor %}
+        </select>
+        <button type="submit">Start</button>
+    </form>
+{% endblock %}

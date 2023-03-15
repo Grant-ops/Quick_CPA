@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Exam</title>
+    <script>
+      function validateForm() {
+        var radios = document.getElementsByName("choice");
+        var formValid = false;
+
+        var i = 0;
+        while (!formValid && i < radios.length) {
+          if (radios[i].checked) formValid = true;
+          i++;
+        }
+
+        if (!formValid) {
+          alert("Please select an answer");
+          return false;
+        }
+
+        return true;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Exam</h1>
+    <form method="post" onsubmit="return validateForm()">
+      <p>{{ question.question }}</p>
+      {% for choice in choices %}
+          <input type="radio" id="{{ choice }}" name="choice" value="{{ choice }}">
+          <label for="{{ choice }}">{{ choice }}</label><br>
+      {% endfor %}
+      <input type="submit" value="Submit">
+    </form>
+    {% for message in get_flashed_messages() %}
+      <p>{{ message }}</p>
+    {% endfor %}
+  </body>
+</html>
